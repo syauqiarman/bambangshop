@@ -65,11 +65,11 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [x] Commit: `Implement unsubscribe function in Notification controller.`
     -   [x] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
 -   **STAGE 3: Implement notification mechanism**
-    -   [ ] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
-    -   [ ] Commit: `Implement notify function in Notification service to notify each Subscriber.`
-    -   [ ] Commit: `Implement publish function in Program service and Program controller.`
-    -   [ ] Commit: `Edit Product service methods to call notify after create/delete.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-3" questions in this README.
+    -   [x] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
+    -   [x] Commit: `Implement notify function in Notification service to notify each Subscriber.`
+    -   [x] Commit: `Implement publish function in Program service and Program controller.`
+    -   [x] Commit: `Edit Product service methods to call notify after create/delete.`
+    -   [x] Write answers of your learning module's "Reflection Publisher-3" questions in this README.
 
 ## Your Reflections
 This is the place for you to write reflections:
@@ -91,3 +91,10 @@ This is the place for you to write reflections:
 3. Sebelumnya, saya telah menggunakan Postman dalam mata kuliah Pemrograman Berbasis Platform. Postman sangat berguna untuk menguji API dengan mengirimkan permintaan HTTP dan memeriksa apakah respons yang diterima sesuai dengan harapan. Postman mempermudah pengiriman permintaan HTTP dengan data dalam body atau parameter ke URL atau endpoint tertentu yang membantu saya memastikan apakah suatu endpoint dapat menerima data dengan benar dan apakah data responsnya dikembalikan dengan benar.
 
 #### Reflection Publisher-3
+1. Pada kasus ini, Observer Pattern dengan pendekatan Push Model untuk sistem notifikasi saat setiap proses add, delete, dan publish produk berlangsung. Ketika proses-proses tersebut terjadi, NotificationService akan secara iteratif mengirimkan notifikasi kepada semua Subscriber yang telah berlangganan pada tipe produk terkait melalui fungsi notify dengan mengiterasikan pengiriman data ke setiap Subscribernya.
+
+2. Jika kita menggunakan metode lain yaitu pull model untuk kasus Subscriber pada tutorial ini, maka Subscriber haruslah aktif untuk meminta data kepada Publisher. Keuntungan dari hal tersebut adalah Subscriber dapat mengambil data yang relevan dengan mereka kapanpun, namun hal tersebut juga bisa menjadi kekurangan karena sistem notifikasi untuk Subscriber yang sudah berlangganan harusnya untuk sistem automasi setiap terdapat add, delete, dan publish product akan berubah menjadi Subscriber yang harus mengetahui struktur dari data yang mereka ingin agar bisa mengambil data mana yang mereka mau serta waktu pengambilannya.
+
+Keuntungan menggunakan pull model dalam kasus Subscriber memungkinkan decoupling karena observer tidak perlu mengetahui detail data yang dibutuhkan sebelumnya. Namun, kekurangannya dapat meningkatkan kompleksitas karena observer harus mengimplementasikan logika untuk memilih data yang diinginkan dan dapat menyebabkan redundansi jika data yang sama diambil berkali-kali. Dalam konteks ini, Subscriber harus aktif dalam meminta data kepada Publisher, meskipun mereka dapat mengambil data yang relevan kapan saja tetap saja ada kekurangan yang dapat menambah kompleksitas sistem notifikasi bagi Subscriber yang sudah berlangganan.
+
+3. Ketika subscriber dari publisher terus bertambah, antrian notifikasi akan semakin memanjang. Karena notifikasi diproses secara satu per satu berurutan tanpa penggunaan multi-threading yang dapat memperlambat kinerja aplikasi dan menyebabkan bottleneck pada sistem karena tingginya beban yang harus ditangani.
