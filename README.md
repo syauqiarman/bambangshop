@@ -58,12 +58,12 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [x] Commit: `Implement delete function in Subscriber repository.`
     -   [x] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
 -   **STAGE 2: Implement services and controllers**
-    -   [ ] Commit: `Create Notification service struct skeleton.`
-    -   [ ] Commit: `Implement subscribe function in Notification service.`
-    -   [ ] Commit: `Implement subscribe function in Notification controller.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification service.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification controller.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
+    -   [x] Commit: `Create Notification service struct skeleton.`
+    -   [x] Commit: `Implement subscribe function in Notification service.`
+    -   [x] Commit: `Implement subscribe function in Notification controller.`
+    -   [x] Commit: `Implement unsubscribe function in Notification service.`
+    -   [x] Commit: `Implement unsubscribe function in Notification controller.`
+    -   [x] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
 -   **STAGE 3: Implement notification mechanism**
     -   [ ] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
     -   [ ] Commit: `Implement notify function in Notification service to notify each Subscriber.`
@@ -84,5 +84,10 @@ This is the place for you to write reflections:
 3. Menurut saya, penggunaan Singleton pattern dalam BambangShop memastikan bahwa hanya ada satu instance dari SUBSCRIBER yang dapat diakses oleh banyak Thread. Namun, untuk memastikan keselamatan penggunaan ThreadSafe dalam konteks multithreading, lebih baik menggabungkan Singleton dengan DashMap. Hal ini tidak hanya menjamin thread safety, tetapi juga memastikan bahwa daftar subscriber tetap terpusat dan tidak tersebar di berbagai bagian DashMap.
 
 #### Reflection Publisher-2
+1. Memisahkan Service dan Repository dari Model adalah tindakan yang mendukung prinsip-prinsip SOLID, terutama Prinsip Single Responsibility (SRP). Dalam pola MVC tradisional, Model bertanggung jawab tidak hanya atas penyimpanan data tetapi juga logika bisnis, yang bertentangan dengan SRP. Oleh karena itu, solusi yang diajukan adalah memisahkan Service untuk mengatur logika bisnis dan Repository untuk mengelola akses data. Dengan menerapkan konsep Separation of Concerns dari SOLID, kita memahami bahwa pembagian tugas yang jelas antara Service dan Repository penting untuk menciptakan kode yang fleksibel dan mudah diatur.
+
+2. Penggunaan model saja dalam penanganan data logic dan business logic akan mengakibatkan keterkaitan yang tinggi antar bagian, yang pada gilirannya akan menyulitkan perawatan dan skalabilitas aplikasi. Jadi meskipun kode masih berfungsi, kompleksitasnya menjadi tidak fleksibel karena bagian-bagian saling terkait, sehingga membuatnya sulit dipelihara dan meningkatkan kompleksitas secara keseluruhan. Dengan kata lain, tanpa memisahkan Service dan Repository dari model, kode akan sulit dipelihara dan kompleksitasnya akan meningkat.
+
+3. Sebelumnya, saya telah menggunakan Postman dalam mata kuliah Pemrograman Berbasis Platform. Postman sangat berguna untuk menguji API dengan mengirimkan permintaan HTTP dan memeriksa apakah respons yang diterima sesuai dengan harapan. Postman mempermudah pengiriman permintaan HTTP dengan data dalam body atau parameter ke URL atau endpoint tertentu yang membantu saya memastikan apakah suatu endpoint dapat menerima data dengan benar dan apakah data responsnya dikembalikan dengan benar.
 
 #### Reflection Publisher-3
