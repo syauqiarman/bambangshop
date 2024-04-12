@@ -48,15 +48,15 @@ You can install Postman via this website: https://www.postman.com/downloads/
     (You might want to use `cargo check` if you only need to verify your work without running the app.)
 
 ## Mandatory Checklists (Publisher)
--   [ ] Clone https://gitlab.com/ichlaffterlalu/bambangshop to a new repository.
+-   [x] Clone https://gitlab.com/ichlaffterlalu/bambangshop to a new repository.
 -   **STAGE 1: Implement models and repositories**
-    -   [ ] Commit: `Create Subscriber model struct.`
-    -   [ ] Commit: `Create Notification model struct.`
-    -   [ ] Commit: `Create Subscriber database and Subscriber repository struct skeleton.`
-    -   [ ] Commit: `Implement add function in Subscriber repository.`
-    -   [ ] Commit: `Implement list_all function in Subscriber repository.`
-    -   [ ] Commit: `Implement delete function in Subscriber repository.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
+    -   [x] Commit: `Create Subscriber model struct.`
+    -   [x] Commit: `Create Notification model struct.`
+    -   [x] Commit: `Create Subscriber database and Subscriber repository struct skeleton.`
+    -   [x] Commit: `Implement add function in Subscriber repository.`
+    -   [x] Commit: `Implement list_all function in Subscriber repository.`
+    -   [x] Commit: `Implement delete function in Subscriber repository.`
+    -   [x] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
 -   **STAGE 2: Implement services and controllers**
     -   [ ] Commit: `Create Notification service struct skeleton.`
     -   [ ] Commit: `Implement subscribe function in Notification service.`
@@ -77,6 +77,11 @@ This is the place for you to write reflections:
 ### Mandatory (Publisher) Reflections
 
 #### Reflection Publisher-1
+1. Dalam pola Observer, Subscriber menerima pembaruan dari subjek saat terjadi perubahan. Implementasi interface/trait digunakan untuk menggambarkan interface Subscriber. Pada kasus BambangShop yang hanya ada satu jenis subscriber, maka interface/trait tidak diperlukan, single model struct saja sudah cukup. Namun, jika membutuhkan fleksibilitas dan memerlukan behavior yang beda, disarankan untuk menggunakan trait. Dengan trait, sistem dapat diperluas dengan mudah.
+
+2. Dengan mempertimbangkan syarat bahwa id dan url subscriber harus unik, disarankan untuk menggunakan DashMap. Dengan memanfaatkan key yang unik, operasi insert, lookup, dan deletion akan berlangsung dengan efisiensi yang tinggi. Pemilihan DashMap menjadi lebih tepat dalam konteks ini mengingat keunikan id dan url yang menjadi persyaratan. Jika memilih Vec, terutama dalam kasus di mana url dan id memiliki kemungkinan kesamaan, akan menjadi lebih rumit karena memerlukan dua Vec terpisah untuk menyimpan data yang tentunya akan meningkatkan kompleksitas manajemen data dan memperlambat proses secara keseluruhan. Karenanya, DashMap menjadi pilihan yang lebih optimal untuk kasus di mana id produk dan url subscriber harus unik.
+
+3. Menurut saya, penggunaan Singleton pattern dalam BambangShop memastikan bahwa hanya ada satu instance dari SUBSCRIBER yang dapat diakses oleh banyak Thread. Namun, untuk memastikan keselamatan penggunaan ThreadSafe dalam konteks multithreading, lebih baik menggabungkan Singleton dengan DashMap. Hal ini tidak hanya menjamin thread safety, tetapi juga memastikan bahwa daftar subscriber tetap terpusat dan tidak tersebar di berbagai bagian DashMap.
 
 #### Reflection Publisher-2
 
